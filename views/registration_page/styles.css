@@ -63,7 +63,7 @@ img {
     position: relative;
     height: 100vh;
     width: 1194px;
-    background: url("../login_page/assets/background.jpg") no-repeat center center scroll;
+    background: url("../registration_page/assets/background.jpg") no-repeat center center scroll;
     background-size: cover;
     float: left;
     -webkit-animation: bgslide 2.3s forwards;
@@ -153,7 +153,7 @@ img {
     background: -o-linear-gradient(red 0%, black 100%);
     background: linear-gradient(red 0%, black 100%);
     border: none;
-    margin-top: 60px;
+    margin-top: 50px;
     margin-bottom: 20px;
     width: 241px;
     height: 58px;
@@ -356,7 +356,7 @@ img {
 
     .login .container .login-form form button[type=submit] {
         height: 45px;
-        margin-top: 100px;
+        margin-top: 5px;
     }
 
     .login .container .login-form .remember-form {

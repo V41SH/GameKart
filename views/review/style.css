@@ -1,0 +1,55 @@
+.nav-bar .container-fluid{
+    padding: 0;
+}
+
+
+.main .row{
+    height: 100%;
+}
+
+
+.about-game{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20%;
+    height: 68vh;
+}
+
+.about-game .title{
+    font-size:100px;
+}
+
+.about-game .tagline{
+    font-style: italic;
+}
+
+
+
+.game-carousel .container-fluid{
+    padding: 0px;
+}
+.game-carousel .carousel{
+    padding: 0px;
+}
+
+.game-carousel img{
+    width: auto;
+    height: 82vh;
+}
+
+
+.rev_label{
+    position:absolute;
+    margin-top: 23vh;
+    left:45px
+}
+
+
+textarea{
+    position: absolute;
+    margin-top: 23vh;
+    width: 400px;
+    height: 200px;
+    left: 40px;
+}

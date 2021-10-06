@@ -1,0 +1,20 @@
+.nav-bar .container-fluid{
+    padding: 0;
+}
+
+.carousel-inner img{
+    width: 80%;
+    height: auto;
+}
+
+.game-menu{
+    padding: 30px 150px 20px 150px;
+}
+.game-menu .container-sm{
+    padding: 0;
+}
+
+.game-menu .catalogue{
+    width: 100%;
+    height: auto;
+}

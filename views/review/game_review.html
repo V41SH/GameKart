@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" href="../review/style.css">
+
+    <title>Game Review</title>
+</head>
+    <body>
+        <header class="nav-bar">
+            <div class="container-fluid">
+               <nav class="navbar navbar-expand-sm bg-dark justify-content-between">
+                   <a class="navbar-brand"  href="#">
+                       <img src="../review/assets/Gamekart-logos_white.png" alt="Logo" style="width: 200px; height: 50px;">
+                   </a>
+                   <ul class="navbar-nav">
+                     <li class="nav-item">
+                       <div class="btn-group btn-group-lg">
+                           <button type="button" class="btn btn-primary">Signup</button>
+                           <button type="button" class="btn btn-primary">Login</button>
+                           <!-- <button type="button" class="btn btn-primary">Logout</button> -->
+                       </div>
+                     </li>
+                   </ul>
+               </nav>
+            </div>
+        </header>
+        <section class="main">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-3 border">
+                        <div class="about-game">    
+                            <h2 class="title">Far Cry-6</h2>
+                            <p class="tagline">An engaging survival game</p>
+                            <form action="#" method="POST">
+                                <label class="rev_label">Review</label><br>
+                                <textarea id="review" placeholder="Write your review here" ></textarea>
+                                <button type="submit" class="btn btn-primary btn-block" style="margin-top: 48vh;">Submit</button>
+
+                            </form>                                                        
+                            
+                        </div>
+                    </div>
+                    <div class="col-sm border" style="padding:0%;">
+                        <div class="game-carousel">
+                            <div class="container-fluid bg-dark">
+                                <div id="demo" class="carousel slide" data-ride="carousel">
+                        
+                                    <!-- Indicators -->
+                                    <ul class="carousel-indicators">
+                                      <li data-target="#demo" data-slide-to="0" class="active"></li>
+                                      <li data-target="#demo" data-slide-to="1"></li>
+                                      <li data-target="#demo" data-slide-to="2"></li>
+                                    </ul>
+                                  
+                                    <!-- The slideshow -->
+                                    <div class="carousel-inner justify-content-center ">
+                                      <div class="carousel-item active">
+                                        <img src="../review/assets/farcry-6/img-1.jpg" class="mx-auto d-block" alt="Image-1">
+                                      </div>
+                                      <div class="carousel-item">
+                                        <img src="../review/assets/farcry-6/img-2.jpg" class="mx-auto d-block" alt="Image-2">
+                                      </div>
+                                      <div class="carousel-item">
+                                        <img src="../review/assets/farcry-6/img-3.jpg" class="mx-auto d-block" alt="Image-3">
+                                      </div>
+                                    </div>
+                                  </div>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </body>
+</html>

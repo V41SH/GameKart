@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <!-- Latest compiled and minified CSS -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+     <!-- jQuery library -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 
+     <!-- Popper JS -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+ 
+     <!-- Latest compiled JavaScript -->
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+     
+     <link rel="stylesheet" href="./style.css">
+
+    <title>Add Game</title>
+
+</head>
+
+<body class="bg-dark">
+    <header class="nav-bar">
+        <div class="container-fluid" style="padding: 0;">
+           <nav class="navbar navbar-expand-sm bg-dark justify-content-between">
+               <a class="navbar-brand"  href="/">
+                   <img src="../review/assets/Gamekart-logos_white.png" alt="Logo" style="width: 200px; height: 50px;">
+               </a>
+           </nav>
+        </div>
+    </header>
+    <section class="main">
+        <div class="container-fluid bg-dark text-white border text-center">
+            <h1> Add a new game</h1> 
+        </div>
+        <form action="#">
+            <div class="container-fluid bg-dark" style="display: flex; padding: 5%;">
+                <div class="container text-white" style="display: inline-block; text-align: end; font-size: 20px;">
+                    Name of the Game :<br><br>
+                    Caption :<br><br>
+                    Cost :<br><br>
+                    Images :<br><br>
+                    Description :<br><br>
+                </div>
+                <div class="container text-white" style="line-height: 27px;">
+                    <input type="text" name="name_of_game"> <br><br>
+                    <input type="text" name="caption"> <br><br>
+                    <input type="number" name="cost"> <br><br>
+                    <input type="file" name="images"> <br><br>
+                    <textarea style="width: 40%; height: 50%;"></textarea> <br><br>
+                </div>
+            </div>
+        </form>
+    </section>    
+</body>
+</html>

@@ -63,11 +63,9 @@ img {
     position: relative;
     height: 100vh;
     width: 1194px;
-    background: url("../login_page/assets/background.jpg") no-repeat center center scroll;
+    background: url("../site_data/images/login_background.jpg") no-repeat center center scroll;
     background-size: cover;
     float: left;
-    -webkit-animation: bgslide 2.3s forwards;
-    animation: bgslide 2.3s forwards;
 }
 
 .bg-illustration img {
@@ -282,16 +280,7 @@ img {
         }
     }
 
-    .bg-illustration {
-        float: none;
-        background: url("../login_page/assets/background.jpg") center center;
-        background-size: cover;
-        -webkit-animation: slideIn 0.8s ease-in-out forwards;
-        animation: slideIn 0.8s ease-in-out forwards;
-        width: 100%;
-        height: 190px;
-        text-align: center;
-    }
+   
 
     .bg-illustration img {
         width: 100px;
@@ -334,8 +323,7 @@ img {
     }
 
     .login .container {
-        -webkit-animation: slideIn 0.8s ease-in-out forwards;
-        animation: slideIn 0.8s ease-in-out forwards;
+        
         width: 85%;
         float: none;
         

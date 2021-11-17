@@ -63,7 +63,7 @@ img {
     position: relative;
     height: 100vh;
     width: 1194px;
-    background: url("../registration_page/assets/background.jpg") no-repeat center center scroll;
+    background: url("../site_data/images/signup_background.jpg") no-repeat center center scroll;
     background-size: cover;
     float: left;
     -webkit-animation: bgslide 2.3s forwards;

@@ -4,10 +4,11 @@ const path = require('path');
 
 router.route('/')
   .get(async(req,res)=>{
-    res.sendFile(path.join(__dirname + '/../views/login_page/login_page.html'))
+    res.render('login')
   })
   .post((req,res)=>{
-  
+    console.log(req.body)
+    res.redirect("/home")
 })
 
 module.exports = router;

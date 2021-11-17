@@ -4,7 +4,7 @@ const path = require('path');
 
 router.route('/')
   .get(async(req,res)=>{
-    res.sendFile(path.join(__dirname + '/../views/homepage/homepage.html'))
+    res.render('homepage')
   })
   .post((req,res)=>{
   

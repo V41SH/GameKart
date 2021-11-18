@@ -1,7 +1,10 @@
+.main{
+    text-align: center;
+}
 #id1{
     display: flex;
     justify-content: center;
 }
 input{
-    width: 40%;
+    width: 60%;
 }

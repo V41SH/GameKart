@@ -1,10 +1,8 @@
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose;
-
-/*
-    Defining the schema for the reviews collection
-*/
+const Schema = mongoose.schema
+const User = require("User")
+const Game = require("Game")
 
 const reviewSchema = new Schema({
     userID: {

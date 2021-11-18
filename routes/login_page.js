@@ -1,14 +1,26 @@
 const express = require('express');
 const router= express.Router();
-const path = require('path');
-
+const UserModel = require("../models/user")
 router.route('/')
   .get(async(req,res)=>{
     res.render('login')
   })
   .post((req,res)=>{
-    console.log(req.body)
-    res.redirect("/home")
+    UserModel.findOne({userName:req.body.username},function(err,user){
+      if(err){
+        console.log(err)
+      } else{
+        if(user){
+          if(user.password === req.body.password){
+          req.session.isLoggedIn = true
+          res.redirect("/home")
+          }else{
+            res.render('login',{msg:"Incorrect Password"})
+          }
+        }else{
+        res.render('login',{msg:"Incorrect Credentials"})
+        }
+      }})    
 })
 
-module.exports = router;
+module.exports = router; 

@@ -1,12 +1,15 @@
 const mongoose = require('mongoose');
-
-const { Schema } = mongoose;
-
-/*
-    Defining the schema for the user collection
-*/
+const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+    userID: {
+        type: [mongoose.Schema.Types.ObjectId],
+    },
+    userName: {
+        type: String,
+        required: true,
+        unique: true,
+    },
     name: {
         type: String,
         required: true,

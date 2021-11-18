@@ -37,23 +37,26 @@
         <div class="container-fluid bg-dark text-white border text-center">
             <h1> Add a new game</h1> 
         </div>
-        <form action="#">
+        <form action="/add" method="post" enctype="multipart/form-data">
             <div class="container-fluid bg-dark" style="display: flex; padding: 5%;">
-                <div class="container text-white" style="display: inline-block; text-align: end; font-size: 20px;">
+                <div class="container text-white" style="display: inline-block; text-align: end; font-size: 25px;font-weight: 600;">
                     Name of the Game :<br><br>
                     Caption :<br><br>
                     Cost :<br><br>
                     Images :<br><br>
                     Description :<br><br>
                 </div>
-                <div class="container text-white" style="line-height: 27px;">
+                <div class="container text-white" style="line-height: 34px; padding-left: 20px; text-align: left;">
                     <input type="text" name="name_of_game"> <br><br>
                     <input type="text" name="caption"> <br><br>
                     <input type="number" name="cost"> <br><br>
-                    <input type="file" name="images"> <br><br>
-                    <textarea style="width: 40%; height: 50%;"></textarea> <br><br>
+                    <input type="file" name="game_image" multiple> <br><br>
+                    <textarea style="width: 60%; height: 50%;" name="description"></textarea> <br><br>
                 </div>
             </div>
+            <br><br>
+            <input type="submit" value="Submit" style="font-size: 25px; width: 30%; border-radius: 20px;">
+            <%= typeof msg != 'undefined' ? msg : ' ' %>
         </form>
     </section>    
 </body>

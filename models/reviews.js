@@ -1,20 +1,24 @@
 const mongoose = require('mongoose');
-
-const Schema = mongoose.schema
-const User = require("User")
-const Game = require("Game")
+const Schema = mongoose.Schema
+const User = require("./user")
+const Game = require("./games")
 
 const reviewSchema = new Schema({
-    userID: {
+    gameID: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'User',
+        ref: Game,
     },
-    gameID: {
-        type: [mongoose.Schema.Types.ObjectId],
+    title: {
+        type: String,
+        required:true,
+    },
+    userName: {
+        type: String,
         required: true,
-        ref: 'Game',
+        ref: User
     },
+    
     review: {
         type: String,
         required: true,

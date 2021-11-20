@@ -19,6 +19,21 @@
      
      <link rel="stylesheet" href="/stylesheets/game_list.css">
 
+     <script>
+         function remove(gameID){
+            const deleteGame = {
+                game:gameID
+            }
+            fetch("/review",{
+                method: "POST",
+                body: JSON.stringify(deleteGame),
+                headers:{
+                    'Content-type': 'application/json; charset=UTF-8'
+                }
+            })
+         }
+     </script>
+
     <title>Game List</title>
 
 </head>
@@ -36,33 +51,20 @@
     <section class="main">
         <div class="container border text-center text-white bg-dark " style="padding: 30px;">
             <h1>Game List</h1>
-            <div class="container border" style="height: 800px; padding-top: 20px;">
+            <div class="container border" style="height: 800px; padding: 20px;overflow-y: auto;">
                 <ul class="list-group">
-                    <li class="list-group-item list-group-item">
-                        <p style="color: black; font-size:larger; padding-top: 7px;">Far Cry-5</p> 
-                        <span>
-                            <a href="#" class="btn btn-primary" role="button">Edit Details</a>
-                            <a href="#" class="btn btn-primary" role="button">Remove</a>
-                        </span>
-                    </li>
-                    <li class="list-group-item list-group-item">
-                        <p style="color: black; font-size:larger; padding-top: 7px;">Assasins Creed</p> 
-                        <span>
-                            <a href="#" class="btn btn-primary" role="button">Edit Details</a>
-                            <a href="#" class="btn btn-primary" role="button">Remove</a>
-                        </span>
-                    </li>
-                    <li class="list-group-item list-group-item">
-                        <p style="color: black; font-size:larger; padding-top: 7px;">Counter Strike</p> 
-                        <span>
-                            <a href="#" class="btn btn-primary" role="button">Edit Details</a>
-                            <a href="#" class="btn btn-primary" role="button">Remove</a>
-                        </span>
-                    </li>
+                    <% game_list.forEach(game=>{ %>
+                        <li class="list-group-item list-group-item list-group-item-action">
+                            <p style="color: black; font-size:larger; padding-top: 7px;"><%= game.name%></p> 
+                            <span>
+                                <a href="/gamelist" class="btn btn-primary" role="button" onclick= "remove('<%= game._id %>')" >Remove</a>
+                            </span>
+                        </li>
+                    <% }) %>
                 </ul>
             </div>
             <br>
-            <a href="#" class="btn btn-primary" role="button">Add a Game</a>
+            <a href="/add" class="btn btn-primary" role="button">Add a Game</a>
         </div>    
     </section>    
 </body>

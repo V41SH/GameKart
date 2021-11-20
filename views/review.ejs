@@ -18,10 +18,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     
     <link rel="stylesheet" href="/stylesheets/review.css">
-
-    <title>Game Review</title>
+    <title>Review</title>
 </head>
-    <body>
+    <body class="bg-dark">
         <header class="nav-bar">
             <div class="container-fluid">
                <nav class="navbar navbar-expand-sm bg-dark justify-content-between">
@@ -31,60 +30,53 @@
                    <ul class="navbar-nav">
                      <li class="nav-item">
                        <div class="btn-group btn-group-lg">
-                           <a href="/login" class="btn btn-primary" role="button">Login</a>
-                           <a href="/signup" class="btn btn-primary" role="button">Signup</a>
-                           <!-- <button type="button" class="btn btn-primary">Logout</button> -->
+                           <a href="/home" onclick=logout() class="btn btn-primary" role="button">Logout</a>
                        </div>
                      </li>
                    </ul>
                </nav>
             </div>
-        </header>
-        <section class="main">
-            <div class="container-fluid bg-dark text-white" style="position: absolute;height: 92.7%;">
-                <div class="row">
-                    <div class="col-sm-3 border">
-                        <div class="about-game">    
-                            <h2 class="title">Far Cry-6</h2>
-                            <p class="tagline">An engaging survival game</p>
-                            <form action="#" method="POST">
-                                <label class="rev_label">Review</label><br>
-                                <textarea id="review" placeholder="Write your review here" ></textarea>
-                                <button type="submit" class="btn btn-primary btn-block" style="margin-top: 48vh;">Submit</button>
-                            </form>                                                        
-                        </div>
-                    </div>
-                    <div class="col-sm border" style="padding:0%;">
-                        <div class="game-carousel">
-                            <div class="container-fluid bg-dark" style="padding-top: 4%;">
-                                <div id="demo" class="carousel slide" data-ride="carousel">
+        </header> 
+        <div class="container-fluid">
+            <div class="row text-white">
+                
+                <div class="col-3 border border-white text-center" id="abtGame">    
+                    <h2 style="font-weight:bold;font-size:50px; padding-top: 100px;"><%= game.name %></h2><br><br><br><br>
+                    <form action="/review" method="post">
+                        <input type="text" name="gameID" value="<%= game._id %>" hidden>
+                        <input type="text" name="title" placeholder="Review Title"><br><br><br>
+                        <textarea name="review" placeholder="Review"></textarea><br><br>
+                        <button class="btn btn-primary" type="submit" style="font-size: 20px;">Submit</button>
+                    </form>
+                </div>
+                
+                
+                
+                <div class="col-9 border border-white">
+                    <div id="demo" class="carousel slide" data-ride="carousel">
+            
+                        <!-- Indicators -->
+                        <ul class="carousel-indicators">
+                            <li data-target="#demo" data-slide-to="0" class="active"></li>
+                            <li data-target="#demo" data-slide-to="1"></li>
+                            <li data-target="#demo" data-slide-to="2"></li>
+                        </ul>
                         
-                                    <!-- Indicators -->
-                                    <ul class="carousel-indicators">
-                                      <li data-target="#demo" data-slide-to="0" class="active"></li>
-                                      <li data-target="#demo" data-slide-to="1"></li>
-                                      <li data-target="#demo" data-slide-to="2"></li>
-                                    </ul>
-                                  
-                                    <!-- The slideshow -->
-                                    <div class="carousel-inner justify-content-center ">
-                                      <div class="carousel-item active">
-                                        <img src="/site_data/uploads/farcry-6/img-1.jpg" class="mx-auto d-block" alt="Image-1">
-                                      </div>
-                                      <div class="carousel-item">
-                                        <img src="/site_data/uploads/farcry-6/img-2.jpg" class="mx-auto d-block" alt="Image-2">
-                                      </div>
-                                      <div class="carousel-item">
-                                        <img src="/site_data/uploads/farcry-6/img-3.jpg" class="mx-auto d-block" alt="Image-3">
-                                      </div>
-                                    </div>
-                                  </div>
-                             </div>
+                        
+                        <!-- The slideshow -->
+                        <div class="carousel-inner justify-content-center ">
+                            <div class="carousel-item active">
+                                <img src="<%= gamePoster %>" style="width: auto;height: 90vh;" >
+                            </div>
+                            <% gameImage.forEach((image)=>{ %>
+                                <div class="carousel-item">
+                                    <img src="<%= image %>" style="width: auto;height: 90vh;">
+                                </div>
+                            <%})%>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        
+        </div>
     </body>
 </html>

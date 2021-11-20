@@ -1,13 +1,25 @@
 const express = require('express');
 const router= express.Router();
-const path = require('path');
-
+const gameModel = require("../models/games")
+const reviewModel = require("../models/reviews")
 router.route('/')
   .get(async(req,res)=>{
-    res.render("game_list")
+    try{
+      game_list = await gameModel.find({})
+    }catch(err){
+      console.log(err)
+    } 
+    res.render("game_list",{game_list:game_list})
   })
-  .post((req,res)=>{
-  
+
+  .post(async(req,res)=>{
+    try{
+      await gameModel.deleteOne({gameID:game})
+      await reviewModel.deleteMany({gameID:game})
+    } catch (error){
+      console.log(error)
+    }
+    res.sendStatus(200)
 })
 
 module.exports = router;

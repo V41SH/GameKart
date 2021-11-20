@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
-const Schema = mongoose.schema
+const Schema = mongoose.Schema
 
 const gameSchema = new Schema({
     gameID: {
-        type: [mongoose.Schema.Types.ObjectId],
+        type: mongoose.Schema.Types.ObjectId,
     },
     name: {
         type: String,
@@ -20,6 +20,10 @@ const gameSchema = new Schema({
         required: true,
     },
     description: {
+        type: String,
+        required: true,
+    },
+    image_path: {
         type: String,
         required: true,
     },

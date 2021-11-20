@@ -6,7 +6,7 @@ const Game = require("Game")
 
 const reviewSchema = new Schema({
     userID: {
-        type: [mongoose.Schema.Types.ObjectId],
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'User',
     },

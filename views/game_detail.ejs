@@ -18,10 +18,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     
     <link rel="stylesheet" href="/stylesheets/game_detail.css">
-
     <title>Game Details</title>
 </head>
-    <body>
+    <body class="bg-dark">
         <header class="nav-bar">
             <div class="container-fluid">
                <nav class="navbar navbar-expand-sm bg-dark justify-content-between">
@@ -31,63 +30,56 @@
                    <ul class="navbar-nav">
                      <li class="nav-item">
                        <div class="btn-group btn-group-lg">
+                         <% if(isLoggedIn) { %>
+                           <a href="/home" onclick=logout() class="btn btn-primary" role="button">Logout</a>
+                         <% }else{ %>
                            <a href="/login" class="btn btn-primary" role="button">Login</a>
                            <a href="/signup" class="btn btn-primary" role="button">Signup</a>
+                         <% } %>
                        </div>
                      </li>
                    </ul>
                </nav>
             </div>
         </header>
-        <section class="main">
-            <div class="container-fluid bg-dark text-white" style="position: absolute;height: 92.7%;">
-                <div class="row">
-                    <div class="col-sm-3 border">
-                        <div class="about-game">    
-                            <h2 class="title">Far Cry-6</h2>
-                            <p class="tagline">An engaging survival game</p>
-                            <p class="description">Welcome to Yara, a tropical paradise frozen in time. As the dictator of Yara, Antón Castillo is intent on restoring his nation back to its former glory by any means, with his son, Diego, following in his bloody footsteps. Their oppressive rule has ignited a revolution.
-                            </p>
-                            <p class="cost">Rs 1500</p>
-                            <div class="btn-group btn-group-lg" style="margin-top: 30%;">
-                                <button type="button" class="btn btn-primary">Buy Now</button>
-                                <button type="button" class="btn btn-primary">Add to Cart</button>
-                                <a href="/review" class="btn btn-primary" role="button">Write a review</a>
-                            </div>
-                        </div>
+        <div class="container-fluid">
+            <div class="row text-white">
+                <div class="col-3 border border-white text-center" id="abtGame">    
+                    <h2 style="font-weight:bold;font-size:50px;"><%= game.name %></h2>
+                    <p class="font-italic"><%= game.caption %></p><br><br><br>
+                    <p style="font-size:20px;"><%= game.description %></p><br><br></br>
+                    <p style="font-size: 25px;">Rs <%= game.cost %></p><br>
+                    <div class="btn-group btn-group-lg" style="padding-top: 40px;">
+                        <button type="button" class="btn btn-primary">Buy Now</button>
+                        <button type="button" class="btn btn-primary">Add to Cart</button>
+                        <a href="/review/?=<%=game._id%>" class="btn btn-primary" role="button">Write a review</a>
                     </div>
-                    <div class="col-sm border" style="padding:0%;">
-                        <div class="game-carousel">
-                            <div class="container-fluid bg-dark" style="padding-top: 4%;">
-                                <div id="demo" class="carousel slide" data-ride="carousel">
+                </div>
+                <div class="col-9 border border-white">
+                    <div id="demo" class="carousel slide" data-ride="carousel">
+            
+                        <!-- Indicators -->
+                        <ul class="carousel-indicators">
+                            <li data-target="#demo" data-slide-to="0" class="active"></li>
+                            <li data-target="#demo" data-slide-to="1"></li>
+                            <li data-target="#demo" data-slide-to="2"></li>
+                        </ul>
                         
-                                    <!-- Indicators -->
-                                    <ul class="carousel-indicators">
-                                      <li data-target="#demo" data-slide-to="0" class="active"></li>
-                                      <li data-target="#demo" data-slide-to="1"></li>
-                                      <li data-target="#demo" data-slide-to="2"></li>
-                                    </ul>
-                                  
-                                    
-                                    <!-- The slideshow -->
-                                    <div class="carousel-inner justify-content-center ">
-                                        <div class="carousel-item active">
-                                          <img src="/site_data/uploads/farcry-6/img-1.jpg" class="mx-auto d-block" alt="Image-1">
-                                        </div>
-                                        <div class="carousel-item">
-                                          <img src="/site_data/uploads/farcry-6/img-2.jpg" class="mx-auto d-block" alt="Image-2">
-                                        </div>
-                                        <div class="carousel-item">
-                                          <img src="/site_data/uploads/farcry-6/img-3.jpg" class="mx-auto d-block" alt="Image-3">
-                                        </div>
-                                      </div>
-                                  </div>
-                             </div>
+                        
+                        <!-- The slideshow -->
+                        <div class="carousel-inner justify-content-center ">
+                            <div class="carousel-item active">
+                                <img src="<%= gamePoster %>" style="width: auto;height: 90vh;" >
+                            </div>
+                            <% gameImage.forEach((image)=>{ %>
+                                <div class="carousel-item">
+                                    <img src="<%= image %>" style="width: auto;height: 90vh;">
+                                </div>
+                            <%})%>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        
+        </div>
     </body>
 </html>

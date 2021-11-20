@@ -24,6 +24,13 @@
           method: 'POST'
         })
       }
+
+      function getImage(folder){
+        const fs = require('fs')
+        var files = fs.readdirSync(folder)
+        console.log(files[0])
+        return folder+'/'+files[0]
+      }
     </script>
     <title>Home</title>
 </head> 
@@ -43,7 +50,6 @@
                         <a href="/login" class="btn btn-primary" role="button">Login</a>
                         <a href="/signup" class="btn btn-primary" role="button">Signup</a>
                       <% } %>
-                      <!-- <button type="button" class="btn btn-primary">Logout</button> -->
                     </div>
                   </li>
                 </ul>
@@ -52,64 +58,31 @@
      </header>
      <div class="container-fluid bg-dark">
         <div id="demo" class="carousel slide" data-ride="carousel">
-
-            <!-- Indicators -->
-            <ul class="carousel-indicators">
-              <li data-target="#demo" data-slide-to="0" class="active"></li>
-              <li data-target="#demo" data-slide-to="1"></li>
-              <li data-target="#demo" data-slide-to="2"></li>
-            </ul>
-          
             <!-- The slideshow -->
             <div class="carousel-inner justify-content-center ">
               <div class="carousel-item active">
-                <a href="#"><img src="/site_data/uploads/farcry-6/img-1.jpg" class="mx-auto d-block" alt="Far Cry 6"></a>
+                <a href="#"><img src="/site_data/images/Banner.png" class="mx-auto d-block" alt="Image"></a>
               </div>
-              <div class="carousel-item">
-                <a href="#"><img src="/site_data/uploads/assasins_creed/assasins_creed.jpg" class="mx-auto d-block" alt="Skyrim"></a>
-              </div>
-              <div class="carousel-item">
-                <a href="#"><img src="/site_data/uploads/csgo/csgo.jpeg" class="mx-auto d-block" alt="Assasins Creed"></a>
-              </div>
+              <% carouselImages.forEach(image => { %>
+                <div class="carousel-item">
+                  <a href="#"><img src="<%= image %>" class="mx-auto d-block" alt="Image"></a>
+                </div>
+              <% }) %>
             </div>
           
      </div>
      <div class="game-menu">
       <div class="container-fluid">
-        <div class="row">
-          
-          <div class="col-md-3 text-white">
-            <div class="container-sm bg-dark">
-              <a href="#"><img class="catalogue" src="/site_data/uploads/gta5/gta5.jpg"></a>
-              <h3>Grand Theft Auto-V</h3>
-              <p>description</p>
-            </div>
-          </div>
-          
-          <div class="col-md-3 text-white">
-            <div class="container-sm bg-dark">
-              <a href="#"><img class="catalogue" src="/site_data/uploads/csgo/csgo.jpeg"></a>
-              <h3>Counter Strike</h3>
-              <p>description</p>
-            </div>
-          </div>
-          
-          <div class="col-md-3 text-white">
-            <div class="container-sm bg-dark">
-              <a href="#"><img class="catalogue" src="/site_data/uploads/minecraft/minecraft.jpg"></a>
-              <h3>Minecraft</h3>
-              <p>description</p>
-            </div>
-          </div>
-          
-          <div class="col-md-3 text-white">
-            <div class="container-sm bg-dark">
-              <a href="#"><img class="catalogue" src="/site_data/uploads/red_dead_2/redded2.jpeg"></a>
-              <h3>Read Dead Redemption-2</h3>
-              <p>description</p>
-            </div>
-          </div>
-          
+        <div class="row">         
+          <% gameList.forEach(game => { %>
+            <div class="col-md-3 text-white">
+              <div class="container-sm bg-dark">
+                <a href="/game?id=<%=game._id%>"><img class="catalogue" src="<%=game.image_path%>/gamePoster.png" ></a>
+                <h3><%= game.name %></h3>
+                <p><%= game.caption %></p>
+              </div>
+            </div>      
+          <% }) %>
         </div>
       </div>
     </div>

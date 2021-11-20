@@ -1,47 +1,7 @@
 .nav-bar .container-fluid{
     padding: 0;
 }
-
-
-.main .row{
-    height: 100%;
-}
-
-
-.about-game{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50%;
-}
-
-.about-game .title{
-    font-size:100px;
-}
-
-.about-game .tagline{
-    font-style: italic;
-}
-
-.about-game .description{
-    margin-top:40px;
-    text-align: left;
-    display: block;
-}
-
-.about-game .cost{
-    margin-top: 20px;
-}
-
-
-.game-carousel .container-fluid{
-    padding: 0px;
-}
-.game-carousel .carousel{
-    padding: 0px;
-}
-
-.game-carousel img{
-    width: auto;
-    height: 82vh;
+ 
+#abtGame{
+    padding-top: 100px;
 }

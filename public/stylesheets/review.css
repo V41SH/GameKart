@@ -2,8 +2,13 @@
     padding: 0;
 }
 
+#abtGame{
+    padding: 10px;
+}
+
+
 form{
-    padding-top: 100px;
+    padding-top: 20px;
 }
 
 input{

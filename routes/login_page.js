@@ -12,9 +12,9 @@ router.route('/')
       } else{
         if(user){
           if(user.password === req.body.password){
-          req.session.isLoggedIn = true
-          req.session.userName = user.userName
-          res.redirect("/home")
+            req.session.isLoggedIn = true
+            req.session.userName = user.userName
+            res.redirect("/home")
           }else{
             res.render('login',{msg:"Incorrect Password"})
           }

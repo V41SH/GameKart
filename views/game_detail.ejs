@@ -18,6 +18,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     
     <link rel="stylesheet" href="/stylesheets/game_detail.css">
+
+    <script>
+        async function logout(){
+        await fetch('/home',{
+          method: 'POST'
+        })
+      }
+    </script>
     <title>Game Details</title>
 </head>
     <body class="bg-dark">
@@ -48,11 +56,11 @@
                     <h2 style="font-weight:bold;font-size:50px;"><%= game.name %></h2>
                     <p class="font-italic"><%= game.caption %></p><br><br><br>
                     <p style="font-size:20px;"><%= game.description %></p><br><br></br>
-                    <p style="font-size: 25px;">Rs <%= game.cost %></p><br>
+                    <p style="font-size: 25px;"> ₹<%= game.cost %> /-</p><br>
                     <div class="btn-group btn-group-lg" style="padding-top: 40px;">
                         <button type="button" class="btn btn-primary">Buy Now</button>
                         <button type="button" class="btn btn-primary">Add to Cart</button>
-                        <a href="/review/?=<%=game._id%>" class="btn btn-primary" role="button">Write a review</a>
+                        <a href="/review/?id=<%=game._id%>" class="btn btn-primary" role="button">Write a review</a>
                     </div>
                 </div>
                 <div class="col-9 border border-white">
@@ -68,18 +76,31 @@
                         <!-- The slideshow -->
                         <div class="carousel-inner justify-content-center ">
                             <div class="carousel-item active">
-                                <img src="<%= gamePoster %>" style="width: auto;height: 90vh;" >
+                                <img src="<%= gamePoster %>" style="width: auto;height: 85vh;" >
                             </div>
                             <% gameImage.forEach((image)=>{ %>
                                 <div class="carousel-item">
-                                    <img src="<%= image %>" style="width: auto;height: 90vh;">
+                                    <img src="<%= image %>" style="width: auto;height: 85vh;">
                                 </div>
                             <%})%>
                         </div>
                     </div>
                 </div>
             </div>
-            
+            <div class="container text-white text-center">
+                <br><br>
+                <h1 style="font-weight: bolder; font-size: 60px;">Reviews</h1>
+                <div class="container d-inline text-white text-left" style="padding: 30%;" >
+                    <ul class="list-group">
+                        <% reviews.forEach((review)=>{ %>
+                            <li class="list-group-item bg-dark border border-white " style="height:fit-content">
+                                <h1><%= review.title %></h1>
+                                <p class="font-italic">By <%= review.userName  %></p><br><br>
+                                <p><%= review.review %></p>
+                            </li>
+                        <% } )%>    
+                </div>
+            </div>
         </div>
     </body>
 </html>

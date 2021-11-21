@@ -9,7 +9,8 @@ router.route('/')
     }catch(err){
       console.log(err)
     } 
-    res.render("game_list",{game_list:game_list})
+    console.log(req.session)
+    res.render("game_list",{isLoggedIn:req.session.isLoggedIn,game_list:game_list})
   })
 
   .post(async(req,res)=>{

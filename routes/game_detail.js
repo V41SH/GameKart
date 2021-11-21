@@ -10,7 +10,7 @@ router.route('/')
     var gameID = req.query.id
     try{
       var game = await gameModel.findOne({_id:gameID})
-      //var reviews = await reviewModel.findOne({gameID:gameID})
+      var reviews = await reviewModel.find({gameID:gameID})
     }catch(err){
       console.log(err)
     } 

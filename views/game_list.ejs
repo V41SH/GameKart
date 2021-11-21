@@ -20,11 +20,11 @@
      <link rel="stylesheet" href="/stylesheets/game_list.css">
 
      <script>
-         function remove(gameID){
+        async function remove(gameID){
             const deleteGame = {
                 game:gameID
             }
-            fetch("/review",{
+            await fetch("/review",{
                 method: "POST",
                 body: JSON.stringify(deleteGame),
                 headers:{
@@ -32,6 +32,12 @@
                 }
             })
          }
+
+        async function logout(){
+            await fetch('/home',{
+            method: 'POST'
+            })
+        }
      </script>
 
     <title>Game List</title>
@@ -40,13 +46,20 @@
 
 <body>
     <header class="nav-bar">
-        <div class="container-fluid" style="padding: 0;">
-           <nav class="navbar navbar-expand-sm bg-dark justify-content-between">
-               <a class="navbar-brand"  href="/">
-                   <img src="/site_data/images/Gamekart-logos_white.png" alt="Logo" style="width: 200px; height: 50px;">
-               </a>
-           </nav>
-        </div>
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-sm bg-dark justify-content-between">
+                <a class="navbar-brand"  href="/">
+                    <img src="/site_data/images/Gamekart-logos_white.png" alt="Logo" style="width: 200px; height: 50px;">
+                </a>
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <div class="btn-group btn-group-lg">
+                        <a href="/home" onclick=logout() class="btn btn-primary" role="button">Logout</a>
+                    </div>
+                  </li>
+                </ul>
+            </nav>
+         </div>
     </header>
     <section class="main">
         <div class="container border text-center text-white bg-dark " style="padding: 30px;">

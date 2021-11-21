@@ -19,7 +19,7 @@ router.route('/')
     var reviewData = new reviewModel({
       gameID: req.body.gameID,
       title: req.body.title,
-      userName: req.cookies.userName,
+      userName: req.session.userName,
       review: req.body.review,
     });
     reviewData.save((err, doc) => {

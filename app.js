@@ -49,6 +49,7 @@ const game_detail = require('./routes/game_detail')
 const review = require('./routes/review')
 const game_list = require('./routes/game_list')
 const add_game = require('./routes/add_game')
+const cart = require("./routes/cart")
 
 
 //routing
@@ -60,6 +61,7 @@ app.use('/game', game_detail)
 app.use('/review', review);
 app.use('/gamelist', game_list)
 app.use('/add',add_game)
+app.use('/cart', cart)
 
 
 const port=process.env.PORT || 3000

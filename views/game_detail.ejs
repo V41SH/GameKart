@@ -21,10 +21,26 @@
 
     <script>
         async function logout(){
-        await fetch('/home',{
-          method: 'POST'
-        })
-      }
+            await fetch('/home',{
+            method: 'POST'
+            })
+        }
+
+        async function add(item,cost){
+            const addItem = {
+                item: item,
+                cost: cost
+            }
+            await fetch("/cart/add",{
+                method: "POST",
+                body: JSON.stringify(addItem),
+                headers:{
+                    'Content-type': 'application/json; charset=UTF-8'
+                }
+            }).then((res)=>{
+                alert("Item Added to cart successfully")
+            })
+        }
     </script>
     <title>Game Details</title>
 </head>
@@ -41,7 +57,7 @@
                          <% if(isLoggedIn) { %>
                            <a href="/home" onclick=logout() class="btn btn-primary" role="button">Logout</a>
                          <% }else{ %>
-                           <a href="/login" class="btn btn-primary" role="button">Login</a>
+                           <a href="" class="btn btn-primary" role="button">Login</a>
                            <a href="/signup" class="btn btn-primary" role="button">Signup</a>
                          <% } %>
                        </div>
@@ -59,7 +75,7 @@
                     <p style="font-size: 25px;"> ₹<%= game.cost %> /-</p><br>
                     <div class="btn-group btn-group-lg" style="padding-top: 40px;">
                         <button type="button" class="btn btn-primary">Buy Now</button>
-                        <button type="button" class="btn btn-primary">Add to Cart</button>
+                        <button type="button" class="btn btn-primary" onclick="add('<%= game.name %>','<%= game.cost %>')" >Add to Cart</button>
                         <a href="/review/?id=<%=game._id%>" class="btn btn-primary" role="button">Write a review</a>
                     </div>
                 </div>
@@ -67,10 +83,12 @@
                     <div id="demo" class="carousel slide" data-ride="carousel">
             
                         <!-- Indicators -->
+                        
                         <ul class="carousel-indicators">
                             <li data-target="#demo" data-slide-to="0" class="active"></li>
-                            <li data-target="#demo" data-slide-to="1"></li>
-                            <li data-target="#demo" data-slide-to="2"></li>
+                            <% for(let i=1;i<=gameImage.length;i++){ %>
+                                <li data-target="#demo" data-slide-to="<%=i%>"></li>
+                            <%}%>
                         </ul>
                         
                         <!-- The slideshow -->

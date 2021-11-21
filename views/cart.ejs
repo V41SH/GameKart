@@ -17,21 +17,19 @@
      <!-- Latest compiled JavaScript -->
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
      
-     <link rel="stylesheet" href="/stylesheets/game_list.css">
+     <link rel="stylesheet" href="/stylesheets/cart.css">
 
      <script>
-        async function remove(gameID){
-            const deleteGame = {
-                game:gameID
+        async function remove(item){
+            const deleteItem = {
+                item: item
             }
-            await fetch("/gamelist",{
+            await fetch("/cart/remove",{
                 method: "POST",
-                body: JSON.stringify(deleteGame),
+                body: JSON.stringify(deleteItem),
                 headers:{
                     'Content-type': 'application/json; charset=UTF-8'
                 }
-            }).then((res)=>{
-                alert("The selected game has be removed Succefully")
             })
         }
 
@@ -42,7 +40,8 @@
         }
      </script>
 
-    <title>Game List</title>
+
+    <title>Shopping Bag</title>
 
 </head>
 
@@ -65,21 +64,33 @@
     </header>
     <section class="main">
         <div class="container border text-center text-white bg-dark " style="padding: 30px;">
-            <h1>Game List</h1>
-            <div class="container border" style="height: 800px; padding: 20px;overflow-y: auto;">
+            <h2><b><%= user %>'s Shopping Cart</b></h2>
+            <div class="container border" style="height: 700px; padding: 20px;overflow-y: auto;">
                 <ul class="list-group">
-                    <% game_list.forEach(game=>{ %>
+                    <% cartItems.forEach((item)=>{ %>    
                         <li class="list-group-item list-group-item list-group-item-action">
-                            <p style="color: black; font-size:larger; padding-top: 7px;"><%= game.name%></p> 
                             <span>
-                                <a href="/gamelist" class="btn btn-primary" role="button" onclick= "remove('<%= game._id %>')" >Remove</a>
+                                <p style="color: black; font-size:larger; padding-top: 7px;"> <%= item.item %> </p>
+                                <p>Cost: ₹<%= item.cost %></p>
+                            </span>
+                            <span style="padding-top:20px">
+                                <a href="/cart" class="btn btn-primary" role="button" onclick= "remove('<%= item.item%>')" >Remove</a>
                             </span>
                         </li>
                     <% }) %>
                 </ul>
             </div>
             <br>
-            <a href="/add" class="btn btn-primary" role="button">Add a Game</a>
+            <div class="container " id="total">
+                <div>
+                    <p style="font-size: 30px;"><b>Total Cost- </b>₹<%= totalCost %></p>
+                </div>
+                <div class="btn-group btn-group-lg" id="checkout" >
+                    <a href="/home" type="button" class="btn btn-primary" role="button">Keep Shopping</a>
+                    <a href="#" type="button" class="btn btn-primary" role="button">Checkout</a>
+                </div>
+            </div>
+            
         </div>    
     </section>    
 </body>

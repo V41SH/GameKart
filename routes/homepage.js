@@ -2,6 +2,7 @@ const express = require('express')
 const router= express.Router()
 const gameModel = require("../models/games")
 const carousel = require("../public/js/homePage_carousel")
+const ls = require('sessionstorage')
 router.route('/')
   .get((req,res)=>{
     gameModel.find({},function(err,games){
@@ -13,6 +14,7 @@ router.route('/')
       }})    
   })
   .post((req,res)=>{
+    ls.clear()
     req.session.destroy()
 })
 

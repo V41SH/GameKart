@@ -42,10 +42,18 @@
                     <img src="/site_data/images/Gamekart-logos_white.png" alt="Logo" style="width: 200px; height: 50px;">
                 </a>
                 <ul class="navbar-nav">
+                  <% if(isLoggedIn) { %>
+                  <li class="nav-item" style="padding-right:20px">
+                    <a href="/cart">
+                      <img src="/site_data/images/bag.png" alt="Bag" id="bag">
+                    </a>
+                  </li>
+                  <% } %>
                   <li class="nav-item">
                     <div class="btn-group btn-group-lg">
                       <% if(isLoggedIn) { %>
                         <a href="/home" onclick=logout() class="btn btn-primary" role="button">Logout</a>
+
                       <% }else{ %>
                         <a href="/login" class="btn btn-primary" role="button">Login</a>
                         <a href="/signup" class="btn btn-primary" role="button">Signup</a>

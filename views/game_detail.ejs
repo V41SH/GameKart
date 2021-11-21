@@ -75,7 +75,7 @@
                     <p style="font-size: 25px;"> ₹<%= game.cost %> /-</p><br>
                     <div class="btn-group btn-group-lg" style="padding-top: 40px;">
                         <button type="button" class="btn btn-primary">Buy Now</button>
-                        <button type="button" class="btn btn-primary" onclick="add('<%= game.name %>','<%= game.cost %>')" >Add to Cart</button>
+                        <button type="button" class="btn btn-primary" onclick='add("<%= game.name %>","<%= game.cost %>")' >Add to Cart</button>
                         <a href="/review/?id=<%=game._id%>" class="btn btn-primary" role="button">Write a review</a>
                     </div>
                 </div>

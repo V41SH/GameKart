@@ -1,7 +1,7 @@
 {
   "name": "gamekart",
   "version": "1.0.0",
-  "description": "A software to manager a game shop",
+  "description": "A software to manage a game shop",
   "main": "index.js",
   "scripts": {
     "test": "nodemon app.js"

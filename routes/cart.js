@@ -9,7 +9,7 @@ router.get('/',async(req,res)=>{
     cartItems.forEach(element => {
         totalCost += Number(element.cost)
     });
-    res.render('cart',{cartItems:cartItems,totalCost:totalCost,user:user})
+    res.render('cart',{cartItems:cartItems,totalCost:totalCost,user:user,isLoggedIn:req.session.isUser})
 })
 
 router.post('/remove',(req,res)=>{
@@ -28,12 +28,16 @@ router.post('/remove',(req,res)=>{
 })
 
 router.post('/add',(req,res)=>{
-    var item = req.body.item
-    var cost = req.body.cost
-    var cartItems = ls.getItem("cart")
-    cartItems.push({item:item,cost:cost})
-    ls.setItem("cart",cartItems)
-    res.sendStatus(200)
+    if(req.session.isUser){
+        var item = req.body.item
+        var cost = req.body.cost
+        var cartItems = ls.getItem("cart")
+        cartItems.push({item:item,cost:cost})
+        ls.setItem("cart",cartItems)
+        res.send({msg:'true'})
+    } else {
+        res.send({msg:'false'})
+    }
 })  
 
 module.exports = router;

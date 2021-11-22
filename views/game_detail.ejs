@@ -37,9 +37,27 @@
                 headers:{
                     'Content-type': 'application/json; charset=UTF-8'
                 }
-            }).then((res)=>{
-                alert("Item Added to cart successfully")
             })
+            .then(res => {return res.json()})
+            .then( data => {
+                if(data.msg == 'true'){
+                    alert("Item Added to cart successfully")
+                    location.replace("")
+                } else {
+                    alert("Kindly Login before adding items to cart")
+                    location.replace("/login")
+
+                }
+            })
+        }
+
+        function review(auth, gameID){
+            if(auth){
+                location.replace("/review/?id="+gameID)
+            } else {
+                alert("Kindly Login before writing a review")
+                location.replace("/login")
+            }
         }
     </script>
     <title>Game Details</title>
@@ -52,12 +70,19 @@
                        <img src="/site_data/images/Gamekart-logos_white.png" alt="Logo" style="width: 200px; height: 50px;">
                    </a>
                    <ul class="navbar-nav">
+                    <% if(isLoggedIn) { %>
+                        <li class="nav-item" style="padding-right:20px">
+                          <a href="/cart">
+                            <img src="/site_data/images/bag.png" alt="Bag" id="bag">
+                          </a>
+                        </li>
+                    <% } %>
                      <li class="nav-item">
-                       <div class="btn-group btn-group-lg">
+                       <div class="btn-group btn-group-lg" >
                          <% if(isLoggedIn) { %>
-                           <a href="/home" onclick=logout() class="btn btn-primary" role="button">Logout</a>
+                            <a href="/home" onclick=logout() class="btn btn-primary" role="button">Logout</a>
                          <% }else{ %>
-                           <a href="" class="btn btn-primary" role="button">Login</a>
+                           <a href="/login" class="btn btn-primary" role="button">Login</a>
                            <a href="/signup" class="btn btn-primary" role="button">Signup</a>
                          <% } %>
                        </div>
@@ -74,9 +99,9 @@
                     <p style="font-size:20px;"><%= game.description %></p><br><br></br>
                     <p style="font-size: 25px;"> ₹<%= game.cost %> /-</p><br>
                     <div class="btn-group btn-group-lg" style="padding-top: 40px;">
-                        <button type="button" class="btn btn-primary">Buy Now</button>
-                        <button type="button" class="btn btn-primary" onclick='add("<%= game.name %>","<%= game.cost %>")' >Add to Cart</button>
-                        <a href="/review/?id=<%=game._id%>" class="btn btn-primary" role="button">Write a review</a>
+                        <a href="/purchase" role="button" class="btn btn-primary">Buy Now</button>
+                        <a role="button" class="btn btn-primary" onclick='add("<%= game.name %>","<%= game.cost %>")' >Add to Cart</button>
+                        <a role="button" class="btn btn-primary" onclick="review('<%=isLoggedIn%>', '<%=game._id%>')" >Write a review</a>
                     </div>
                 </div>
                 <div class="col-9 border border-white">
@@ -111,7 +136,7 @@
                 <div class="container d-inline text-white text-left" style="padding: 30%;" >
                     <ul class="list-group">
                         <% reviews.forEach((review)=>{ %>
-                            <li class="list-group-item bg-dark border border-white " style="height:fit-content">
+                            <li class="list-group-item bg-dark border border-white " style="height:fit-content;">
                                 <h1><%= review.title %></h1>
                                 <p class="font-italic">By <%= review.userName  %></p><br><br>
                                 <p><%= review.review %></p>

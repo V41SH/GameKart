@@ -11,7 +11,7 @@ router.route('/')
     }catch(err){
       console.log(err)
     } 
-    res.render("game_list",{isLoggedIn:req.session.isLoggedIn,game_list:game_list})
+    res.render("game_list",{isLoggedIn:req.session.isAdmin,game_list:game_list})
   })
 
   .post((req,res)=>{

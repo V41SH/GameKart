@@ -10,7 +10,7 @@ router.route('/')
         console.log(err)
       } else{
         var carouselImages = carousel.func("public/site_data/uploads")
-        res.render('homepage',{isLoggedIn:req.session.isLoggedIn,gameList:games,carouselImages:carouselImages})    
+        res.render('homepage',{isLoggedIn:req.session.isUser,gameList:games,carouselImages:carouselImages})    
       }})    
   })
   .post((req,res)=>{

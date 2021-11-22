@@ -13,11 +13,19 @@ router.route('/')
       } else{
         if(user){
           if(user.password === req.body.password){
-            req.session.isLoggedIn = true
-            req.session.userName = user.userName
-            ls.setItem("user", user.userName)
-            ls.setItem("cart", [])
-            res.redirect("/home")
+            if(user.admin){ 
+              //Admin User
+              req.session.userName = user.userName
+              req.session.isAdmin = true
+              res.redirect("") //Define Admin Route
+            } else { 
+              //Normal User
+              req.session.isUser = true
+              req.session.userName = user.userName
+              ls.setItem("user", user.userName)
+              ls.setItem("cart", [])
+              res.redirect("/home")
+            }         
           }else{
             res.render('login',{msg:"Incorrect Password"})
           }

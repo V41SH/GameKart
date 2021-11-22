@@ -16,7 +16,7 @@ router.route('/')
     } 
       var gameImage = carousel.func(game.image_path)
       var gamePoster = gameImage.pop()
-      res.render('game_detail',{isLoggedIn:req.session.isLoggedIn, game:game, gameImage:gameImage, gamePoster:gamePoster,reviews:reviews})    
+      res.render('game_detail',{isLoggedIn:req.session.isUser, game:game, gameImage:gameImage, gamePoster:gamePoster,reviews:reviews})    
   })
   .post((req,res)=>{
   })

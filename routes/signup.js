@@ -9,6 +9,7 @@ router.route('/')
   
     var userDetails = new userModel({
       userName: req.body.username,
+      admin: false,
       name: req.body.name,
       age: req.body.age,
       email: req.body.email,

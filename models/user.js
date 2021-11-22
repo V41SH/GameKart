@@ -5,6 +5,10 @@ const userSchema = new Schema({
     userID: {
         type: mongoose.Schema.Types.ObjectId,
     },
+    admin: {
+        type: Boolean,
+        required: true,
+    },
     userName: {
         type: String,
         required: true,

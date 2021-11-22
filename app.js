@@ -33,13 +33,23 @@ app.use(express.json())
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-function isAuth(req,res,next){
-    if(req.session.isloggedIn){
+function isAdminLogged(req,res,next){
+    if(req.session.isAdmin){
         next()
     } else {
         res.redirect("/login")
     }
 }
+
+function isUserLogged(req,res,next){
+  if(req.session.isUser){
+      next()
+  } else {
+      res.redirect("/login")
+  }
+}
+
+
 
 const landing_page = require('./routes/landing_page')
 const homepage = require('./routes/homepage')
@@ -59,11 +69,11 @@ app.use('/home', homepage)
 app.use('/login', login)
 app.use('/signup', signup)
 app.use('/game', game_detail)
-app.use('/review', review);
-app.use('/gamelist', game_list)
-app.use('/add',add_game)
-app.use('/cart', cart)
-app.use('/purchase',purchase_game)
+app.use('/review', isUserLogged, review);
+app.use('/gamelist', isAdminLogged, game_list)
+app.use('/add', isAdminLogged, add_game)
+app.use('/cart', isUserLogged, cart)
+app.use('/purchase', isUserLogged,  purchase_game)
 
 
 const port=process.env.PORT || 3000

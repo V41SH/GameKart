@@ -28,7 +28,7 @@ const upload = multer({
 
 router.route('/')
     .get(async(req,res)=>{
-        res.render("add_game")
+        res.render("add_game",{isLoggedIn:req.session.isAdmin})
     })
     .post((req, res)=>{
         upload(req, res, (err)=>{

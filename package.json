@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/V41SH/GameKart#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
     "express-generator": "^4.16.1",

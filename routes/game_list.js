@@ -16,6 +16,7 @@ router.route('/')
 
   .post((req,res)=>{
     var gameID = req.body.game
+    console.log(gameID)
     gameModel.findOne({_id:gameID},function(err,gameData){
       if(err){
         console.log(err)

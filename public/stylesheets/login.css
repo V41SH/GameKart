@@ -66,6 +66,8 @@ img {
     background: url("../site_data/images/login_background.jpg") no-repeat center center scroll;
     background-size: cover;
     float: left;
+    -webkit-animation: bgslide 1.3s forwards;
+    animation: bgslide 1.3s forwards;
 }
 
 .bg-illustration img {

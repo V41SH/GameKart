@@ -37,6 +37,7 @@ router.route('/')
         }
     })
     ls.removeItem("cart")
+    ls.setItem("cart",[])
     res.redirect("\home")
 })
 

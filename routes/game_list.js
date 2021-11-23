@@ -36,7 +36,6 @@ router.route('/')
       .catch(function(error){
         console.log(error)
       })
-    
       res.sendStatus(200)
   })
 

@@ -61,7 +61,8 @@ const game_list = require('./routes/game_list')
 const add_game = require('./routes/add_game')
 const cart = require("./routes/cart")
 const purchase_game = require("./routes/purchase_game")
-
+const adminConsole = require("./routes/admin_console")
+const txHistory = require("./routes/txHistory")
 
 //routing
 app.use('/', landing_page)
@@ -72,8 +73,10 @@ app.use('/game', game_detail)
 app.use('/review', isUserLogged, review);
 app.use('/gamelist', isAdminLogged, game_list)
 app.use('/add', isAdminLogged, add_game)
-app.use('/cart', isUserLogged, cart)
+app.use('/cart', cart)
 app.use('/purchase', isUserLogged,  purchase_game)
+app.use('/adminConsole', adminConsole)
+app.use('/txHistory', isAdminLogged, txHistory)
 
 
 const port=process.env.PORT || 3000

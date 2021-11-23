@@ -17,11 +17,11 @@ router.route('/')
               //Admin User
               req.session.userName = user.userName
               req.session.isAdmin = true
-              res.redirect("") //Define Admin Route
+              res.redirect("/adminConsole") //Define Admin Route
             } else { 
               //Normal User
-              req.session.isUser = true
               req.session.userName = user.userName
+              req.session.isUser = true
               ls.setItem("user", user.userName)
               ls.setItem("cart", [])
               res.redirect("/home")

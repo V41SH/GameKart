@@ -17,7 +17,13 @@
 .game-menu .catalogue{
     width: 100%;
     height: auto;
+    border-radius: 20px;
 }
+
+.carousel-inner img{
+    border-radius: 20px;
+}
+
 
 #bag{
     -webkit-filter: invert(1);

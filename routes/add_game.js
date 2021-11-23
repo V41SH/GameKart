@@ -60,7 +60,7 @@ router.route('/')
                         }
                     });
                 })               
-                res.redirect("/home")
+                res.redirect("/adminConsole")
             }
         })
         

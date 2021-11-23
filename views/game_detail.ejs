@@ -29,8 +29,9 @@
         async function add(item,cost){
             const addItem = {
                 item: item,
-                cost: cost
+                cost: cost,
             }
+            console.log(addItem)
             await fetch("/cart/add",{
                 method: "POST",
                 body: JSON.stringify(addItem),
@@ -42,12 +43,12 @@
             .then( data => {
                 if(data.msg == 'true'){
                     alert("Item Added to cart successfully")
-                    location.replace("")
                 } else {
                     alert("Kindly Login before adding items to cart")
-                    location.replace("/login")
-
                 }
+            })
+            .catch((error)=>{
+                console.log(error)
             })
         }
 
@@ -56,8 +57,33 @@
                 location.replace("/review/?id="+gameID)
             } else {
                 alert("Kindly Login before writing a review")
-                location.replace("/login")
             }
+        }
+
+        async function purchae(item,cost){
+            const addItem = {
+                item: item,
+                cost: cost,
+            }
+            console.log(addItem)
+            await fetch("/cart/add",{
+                method: "POST",
+                body: JSON.stringify(addItem),
+                headers:{
+                    'Content-type': 'application/json; charset=UTF-8'
+                }
+            })
+            .then(res => {return res.json()})
+            .then( data => {
+                if(data.msg == 'true'){
+                    location.replace("/purchase")
+                } else {
+                    alert("Kindly Login before purchasing games")
+                }
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
         }
     </script>
     <title>Game Details</title>
@@ -99,12 +125,12 @@
                     <p style="font-size:20px;"><%= game.description %></p><br><br></br>
                     <p style="font-size: 25px;"> ₹<%= game.cost %> /-</p><br>
                     <div class="btn-group btn-group-lg" style="padding-top: 40px;">
-                        <a href="/purchase" role="button" class="btn btn-primary">Buy Now</button>
+                        <a role="button" class="btn btn-primary" onclick='purchae("<%= game.name %>","<%= game.cost %>")'>Buy Now</button>
                         <a role="button" class="btn btn-primary" onclick='add("<%= game.name %>","<%= game.cost %>")' >Add to Cart</button>
                         <a role="button" class="btn btn-primary" onclick="review('<%=isLoggedIn%>', '<%=game._id%>')" >Write a review</a>
                     </div>
                 </div>
-                <div class="col-9 border border-white">
+                <div class="col-9 border border-white" >
                     <div id="demo" class="carousel slide" data-ride="carousel">
             
                         <!-- Indicators -->
@@ -119,11 +145,11 @@
                         <!-- The slideshow -->
                         <div class="carousel-inner justify-content-center ">
                             <div class="carousel-item active">
-                                <img src="<%= gamePoster %>" style="width: auto;height: 85vh;" >
+                                <img src="<%= gamePoster %>" style="width:100%; height: 950px !important;" >
                             </div>
                             <% gameImage.forEach((image)=>{ %>
                                 <div class="carousel-item">
-                                    <img src="<%= image %>" style="width: auto;height: 85vh;">
+                                    <img src="<%= image %>" style="width:100%; height: 950px !important;">
                                 </div>
                             <%})%>
                         </div>
@@ -136,7 +162,7 @@
                 <div class="container d-inline text-white text-left" style="padding: 30%;" >
                     <ul class="list-group">
                         <% reviews.forEach((review)=>{ %>
-                            <li class="list-group-item bg-dark border border-white " style="height:fit-content;">
+                            <li class="list-group-item bg-dark border border-white " style="height:fit-content; border-radius: 20px;">
                                 <h1><%= review.title %></h1>
                                 <p class="font-italic">By <%= review.userName  %></p><br><br>
                                 <p><%= review.review %></p>

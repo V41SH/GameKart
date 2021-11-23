@@ -17,32 +17,10 @@
      <!-- Latest compiled JavaScript -->
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
      
-     <link rel="stylesheet" href="/stylesheets/game_list.css">
+     <link rel="stylesheet" href="/stylesheets/txHistory.css">
 
-     <script>
-        async function remove(gameID){
-            const deleteGame = {
-                game:gameID
-            }
-            await fetch("/gamelist",{
-                method: "POST",
-                body: JSON.stringify(deleteGame),
-                headers:{
-                    'Content-type': 'application/json; charset=UTF-8'
-                }
-            }).then((res)=>{
-                alert("The selected game has be removed Succefully")
-            })
-        }
-
-        async function logout(){
-            await fetch('/home',{
-            method: 'POST'
-            })
-        }
-     </script>
-
-    <title>Game List</title>
+    
+    <title>TX History</title>
 
 </head>
 
@@ -65,21 +43,33 @@
     </header>
     <section class="main">
         <div class="container border text-center text-white bg-dark " style="padding: 30px;">
-            <h1>Game List</h1>
-            <div class="container border" style="height: 800px; padding: 20px;overflow-y: auto;">
-                <ul class="list-group">
-                    <% game_list.forEach(game=>{ %>
-                        <li class="list-group-item list-group-item list-group-item-action">
-                            <p style="color: black; font-size:larger; padding-top: 7px;"><%= game.name%></p> 
-                            <span>
-                                <a href="/adminConsole" class="btn btn-primary" role="button" onclick= "remove('<%= game._id %>')" >Remove</a>
-                            </span>
-                        </li>
-                    <% }) %>
-                </ul>
+            <h2><b>Transaction History</b></h2>
+            <div class="container border" style="height: 700px; padding: 20px;overflow-y: auto; border-radius: 20px;">
+                <table class="table text-white">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Bill Data</th>
+                        <th scope="col">No of Games</th>
+                        <th scope="col">Sales(in ₹)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% for(let i=0;i<data.length;i++){ %>
+                        <tr>
+                          <th scope="row"><%= i+1 %></th>
+                          <td><%= data[i][0] %></td>
+                          <td><%= data[i][1] %></td>
+                          <td><%= data[i][2] %></td>
+                          <td><%= data[i][3] %></td>
+                        </tr>
+                      <% } %>                     
+                    </tbody>
+                  </table>
             </div>
             <br>
-        </div>    
+            
     </section>    
 </body>
 </html>

@@ -63,6 +63,7 @@ const cart = require("./routes/cart")
 const purchase_game = require("./routes/purchase_game")
 const adminConsole = require("./routes/admin_console")
 const txHistory = require("./routes/txHistory")
+const userDetails = require("./routes/userDetails")
 
 //routing
 app.use('/', landing_page)
@@ -77,7 +78,7 @@ app.use('/cart', cart)
 app.use('/purchase', isUserLogged,  purchase_game)
 app.use('/adminConsole', adminConsole)
 app.use('/txHistory', isAdminLogged, txHistory)
-
+app.use('/userDetails', isAdminLogged, userDetails)
 
 const port=process.env.PORT || 3000
 app.listen(port, () => console.log(`Listening on port ${port}...`));

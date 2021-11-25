@@ -14,7 +14,7 @@ app.use(session({
 }))
 
 const mongoose = require('mongoose')
-const mongoURL = 'mongodb+srv://nishit:iwp_project_db@cluster0.8ntrt.mongodb.net/IWP_Data?retryWrites=true&w=majority' 
+const mongoURL = //mongoDB Credentials
 mongoose
   .connect(mongoURL,{
     useNewUrlParser: true,

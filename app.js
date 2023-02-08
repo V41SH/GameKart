@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express")
 const path = require("path")
 const app = express()
@@ -14,7 +15,7 @@ app.use(session({
 }))
 
 const mongoose = require('mongoose')
-const mongoURL = //mongoDB ATLAS URL
+const mongoURL = process.env.mongoURL
 mongoose
   .connect(mongoURL,{
     useNewUrlParser: true,
